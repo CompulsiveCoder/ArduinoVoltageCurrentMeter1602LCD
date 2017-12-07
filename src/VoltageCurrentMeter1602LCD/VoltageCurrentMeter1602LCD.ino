@@ -4,8 +4,8 @@
 LiquidCrystal_I2C lcd(0x27,16,2);
 
 
-#define VT_PIN A0
-#define AT_PIN A1
+#define VT_PIN A1
+#define AT_PIN A0
 
 float volts;
 float amps;
@@ -51,7 +51,7 @@ void readVoltageCurrent()
   averageCurrentReading = totalCurrentReading / numReadings;
 
   float vcc = readVcc() / 1000.0;  // convert mV to V
-  volts = ((averageVoltageReading * vcc) / 1023) * vcc ;
+  volts = ((averageVoltageReading * vcc) / 1023) * 5 ;
   amps = (averageCurrentReading * vcc) / 1023;
   
   Serial.print("V:");
